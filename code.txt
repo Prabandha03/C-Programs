@@ -1,0 +1,118 @@
+1.
+//To find an element in the middle of the linked list
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *next;
+};
+struct node* createnode(){
+    int d;
+    struct node *t=(struct node*)malloc(sizeof(struct node));
+    printf("Enter data in the node:");
+    scanf("%d",&d);
+    t->data=d;
+    t->next=NULL;
+    return t;
+}
+struct node* createlist(int n){
+    struct node *h,*t,*nn;
+    for(int i=0;i<n;i++){
+        nn=createnode();
+        if(i==0)h=nn;
+        else t->next=nn;
+        t=nn;
+    }
+    return h;
+}
+int findmid(struct node *h,int n){
+    struct node *temp=h;
+    for(int i=1;i<n/2;i++){
+        temp=temp->next;
+    }
+    if(n%2!=0){
+        printf("The data in the middle of the list is:%d",(temp->next)->data);
+    }
+    else{
+        printf("The data in the middle of the list is:%d and %d",temp->data,(temp->next)->data);
+    }
+    return 0;
+}
+void main(){
+    int n;
+    struct node *start;
+    printf("Enter no.of elements");
+    scanf("%d",&n);
+    start=createlist(n);
+    findmid(start,n);
+}
+OUTPUT:
+Enter no.of elements5
+Enter data in the node:1
+Enter data in the node:2
+Enter data in the node:3
+Enter data in the node:4
+Enter data in the node:5
+The data in the middle of the list is:3
+2.
+//To remove duplicates from a linked list
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *next;
+};
+struct node* createnode(){
+    int d;
+    struct node *t=(struct node*)malloc(sizeof(struct node));
+    printf("Enter data in the node:");
+    scanf("%d",&d);
+    t->data=d;
+    t->next=NULL;
+    return t;
+}
+struct node* createlist(int n){
+    struct node *h,*t,*nn;
+    for(int i=0;i<n;i++){
+        nn=createnode();
+        if(i==0)h=nn;
+        else t->next=nn;
+        t=nn;
+    }
+    return h;
+}
+void removeduplica(struct node *h){
+    struct node *temp=h;
+    while(temp->next!=NULL){
+        if(temp->data==(temp->next)->data){
+            temp->next=temp->next->next;
+        }
+        else{
+            temp=temp->next;
+        }
+    }
+}
+void display(struct node *start){
+    while(start!=NULL){
+        printf("%d\n",start->data);
+        start=start->next;
+    }
+}
+void main(){
+    int n;
+    struct node *start;
+    printf("Enter no.of elements");
+    scanf("%d",&n);
+    start=createlist(n);
+    removeduplica(start);
+    display(start);
+}
+OUTPUT:
+Enter no.of elements5
+Enter data in the node:2
+Enter data in the node:2
+Enter data in the node:3
+Enter data in the node:3
+Enter data in the node:3
+2
+3
